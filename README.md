@@ -1,2 +1,2 @@
 # wiki
-For documentation and howtos see the wiki page of this repo
+For documentation and howtos see other .md files in this repository
