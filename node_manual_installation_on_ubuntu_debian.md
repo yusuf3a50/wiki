@@ -11,7 +11,7 @@ deb-src https://deb.nodesource.com/node_20.x focal main
 ```
 2. You will also need to add the nodesource gpg key to allow your system to verify downloads from the new repository youve just added:
 
-`curl https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -`
+`curl https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/nodesource.gpg`
 
 3. Run:
 
