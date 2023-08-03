@@ -2,7 +2,7 @@
 
 - Create an SSH keypair `ssh-keygen -t rsa -b 4096` and upload the public key of the pair to your github account(s) before setting up the following configuration on your local machine
 
-~/.gitconfig:
+~/.gitconfig:		[documentation](https://git-scm.com/docs/git-config#_conditional_includes)
 ```
 [includeIf "gitdir:~/git/githubUsername1Folder/"]
   path = ~/git/githubUsername1Folder/.gitconfig
