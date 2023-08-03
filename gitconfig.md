@@ -39,3 +39,5 @@
 ```
 
 ![tables of git config file locations](gitconfig.png)
+
+See [this Howto](https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/) for more info
