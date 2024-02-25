@@ -10,3 +10,9 @@
 #### reduce size of a pdf (NOT CLI!!)
 Open PDf with LibreOffice Draw
 File > Export > Export as PDF > JPG compression, quality: xx%
+
+#### Compressing Image to a fixed size using jpegoptim
+
+We can compress the image to a fixed size which we want, for that we have to use the –size option with jpegoptim command and mention the size of the image that we want after compressing. Let’s compress the same gfg.jpg file to 200k using jpegoptim with –size option.
+
+`jpegoptim --size=200k gfg.jpg`
