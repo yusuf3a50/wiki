@@ -1,10 +1,10 @@
 ### Remove metadata:
 `ffmpeg -i in.mov -map_metadata -1 -c:v copy -c:a copy out.mov`
 
-### Remove rotate metadata
+#### Remove rotate metadata
 check rotate metadata first:
 `ffmpeg -i input.m4v 2>&1  | grep rotate`
-### Remove `rotate` metadata:
+##### Remove `rotate` metadata:
 `ffmpeg -i input.mp4 -c copy -metadata:s:v:0 rotate="0" output.mp4`
 
 ##### Rotate video:
@@ -19,7 +19,18 @@ check rotate metadata first:
 
 [More documentation](https://www.baeldung.com/linux/ffmpeg-rotate-video)
 
-#### Cut/trim
+##### To Flip Video Vertically
+Use the command line to vertically flip the video. New video will be upside down. Video rendering takes a while and because -vf is a filter flag, it reduces the file in size.
+
+`ffmpeg -i INPUT.mp4 -vf vflip -c:a copy OUTPUT.mp4`
+
+##### To Flip Video Horizontally
+Input following command line to ffmpeg flip video horizontally. Video rendering takes a while and because -vf is a filter flag, it reduces the file in size.
+
+`ffmpeg -i INPUT.mp4 -vf hflip -c:a copy OUTPUT.mp4`
+`ffmpeg -i INPUT.mp4 -vf hflip OUTPUT.mp4`
+
+### Cut/trim
 
 ##### Cut using a specific time
 
