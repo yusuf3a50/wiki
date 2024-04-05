@@ -32,9 +32,4 @@ The above command uses -to to specify an exact time to cut to from the starting 
 ### Remove audio
 You remove audio by using the -an flag:
 
-```
-input_file=example.mkv
-output_file=example-nosound.mkv
-
-ffmpeg -i $input_file -c copy -an $output_file
-```
+`ffmpeg -i input_file.mkv -c copy -an output_file-noSound.mkv`
