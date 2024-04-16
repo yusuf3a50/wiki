@@ -1,4 +1,4 @@
-#gitconfig for git over SSH (NOT HTTPS)
+# gitconfig for git over SSH (NOT HTTPS)
 
 - When you have multiple git accounts, the following setup automates git to push using the correct git credentials when in the respective folder (eg. githubUsername1Folder/repositoryName1).
 
@@ -6,10 +6,10 @@
 
 ~/.gitconfig:		[documentation](https://git-scm.com/docs/git-config#_conditional_includes)
 ```  UseKeychain yes
-git/githubUsername1Folder/"]
-  path = ~/git/githubUsername1Folder/.gitconfig
+[includeIf "gitdir:~/git/githubUsername1Folder/"]
+  path = ~/git/githubUsername1Folder/.gitconfig.Username1
 [includeIf "gitdir:~/git/githubUsername2Folder/"]
-  path = ~/git/githubUsername2Folder/.gitconfig
+  path = ~/git/githubUsername2Folder/.gitconfig.Username2
 
 #the following entries are optional and can cause problems
 [filter "lfs"]
@@ -19,7 +19,7 @@ git/githubUsername1Folder/"]
       required = true
 ```
 
-~/git/githubUsername1Folder/.gitconfig:
+~/git/githubUsername1Folder/.gitconfig.Username1:
 ```
 [user]
 	name = FirstName Surname
@@ -29,7 +29,7 @@ git/githubUsername1Folder/"]
 [core]
 	sshCommand = "ssh -i ~/.ssh/username1privateSSHkey"
 ```
-~/git/githubUsername2Folder/.gitconfig:
+~/git/githubUsername2Folder/.gitconfig.Username2:
 ```
 [user]
 	name = FirstName Surname
