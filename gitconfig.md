@@ -11,6 +11,10 @@
 [includeIf "gitdir:~/git/githubUsername2Folder/"]
   path = ~/git/githubUsername2Folder/.gitconfig.Username2
 
+#This is an example of how an additional folder can also be granted the same configuration with a duplicate gitconfig file.
+[includeIf "gitdir:~/anotherCompletelyDifferentFolder/"]
+  path = ~/anotherCompletelyDifferentFolder/.gitconfig.Username2
+
 #the following entries are optional and can cause problems
 [filter "lfs"]
       clean = git-lfs clean -- %f
@@ -39,6 +43,19 @@
 [core]
 	sshCommand = "ssh -i ~/.ssh/username2privateSSHkey"
 ```
+
+#### ~/anotherCompletelyDifferentFolder/.gitconfig.Username2:
+This is an example of how an additional folder can also be granted the same configuration with a duplicate gitconfig file.
+```
+[user]
+	name = FirstName Surname
+	email = username2@email.com
+	username = username2
+
+[core]
+	sshCommand = "ssh -i ~/.ssh/username2privateSSHkey"
+```
+
 
 ![tables of git config file locations](./imgs/gitconfig.png)
 
