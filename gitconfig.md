@@ -4,7 +4,7 @@
 
 - Create an SSH keypair `ssh-keygen -t rsa -b 4096` and upload the public key of the pair to your github account(s) before setting up the following configuration on your local machine
 
-~/.gitconfig:		[documentation](https://git-scm.com/docs/git-config#_conditional_includes)
+#### ~/.gitconfig:		[documentation](https://git-scm.com/docs/git-config#_conditional_includes)
 ```  UseKeychain yes
 [includeIf "gitdir:~/git/githubUsername1Folder/"]
   path = ~/git/githubUsername1Folder/.gitconfig.Username1
@@ -19,7 +19,7 @@
       required = true
 ```
 
-~/git/githubUsername1Folder/.gitconfig.Username1:
+#### ~/git/githubUsername1Folder/.gitconfig.Username1:
 ```
 [user]
 	name = FirstName Surname
@@ -29,7 +29,7 @@
 [core]
 	sshCommand = "ssh -i ~/.ssh/username1privateSSHkey"
 ```
-~/git/githubUsername2Folder/.gitconfig.Username2:
+#### ~/git/githubUsername2Folder/.gitconfig.Username2:
 ```
 [user]
 	name = FirstName Surname
@@ -45,7 +45,7 @@
 See [this Howto](https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/) for more info
 
 
-N.B. when cloning a repository be sure to use the SSH command, eg.: 
+#### N.B. when cloning a repository be sure to use the SSH command, eg.: 
 ```
 git clone git@github.com:username/wiki.git
 ```
