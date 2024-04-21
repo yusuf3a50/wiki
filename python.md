@@ -2,7 +2,7 @@
 
 This is basically node_modules, python style
 
-`sudo  apt install python3-venv`
+`sudo apt install python3-venv`
 
 `python3 -m venv .venv`
 
@@ -27,7 +27,7 @@ Then to set up a virtual environment in python3.12 youd then need:
 ```
 python3.12 -m venv --upgrade .venv 
 python3.12 -m venv .venv
-source .venv/bin/activate
-pip3 --version      #check whether pip will work for your python3.12
+source .venv/bin/activate   #this changes the terminal to python version 3.12
+pip3 --version              #check whether pip will work for your python3.12
 pip3 install -r requirements.txt
 ```
