@@ -6,7 +6,7 @@ This is basically node_modules, python style
 
 `python3 -m venv .venv`
 
-`bash .venv/bin/activate`
+`source .venv/bin/activate`
 
 Once virtual environment is activated, project dependecies can be installed from requirements.txt with command:
 
