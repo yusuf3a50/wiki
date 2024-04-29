@@ -10,11 +10,21 @@
   path = ~/git/githubUsername1Folder/.gitconfig.Username1
 [includeIf "gitdir:~/git/githubUsername2Folder/"]
   path = ~/git/githubUsername2Folder/.gitconfig.Username2
+```
 
-#This is an example of how an additional folder can also be granted the same configuration with a duplicate gitconfig file.
+This is an example of how an additional folder can also be granted the same 
+configuration:
+
+```
 [includeIf "gitdir:~/anotherCompletelyDifferentFolder/"]
-  path = ~/anotherCompletelyDifferentFolder/.gitconfig.Username2
+  #re-using the same gitconfig file:
+  path = ~/git/githubUsername2Folder/.gitconfig.Username2	
+  # a duplicate gitconfig file can be used in a different location:
+#  path = ~/anotherCompletelyDifferentFolder/.gitconfig.Username2	
+```
 
+#### Extras:
+```
 #the following entries are optional and can cause problems
 [filter "lfs"]
       clean = git-lfs clean -- %f
@@ -45,7 +55,7 @@
 ```
 
 #### ~/anotherCompletelyDifferentFolder/.gitconfig.Username2:
-This is an example of how an additional folder can also be granted the same configuration with a duplicate gitconfig file.
+This is an example of how an additional folder can also be granted the same configuration with a duplicate gitconfig file in a different location.
 ```
 [user]
 	name = FirstName Surname
