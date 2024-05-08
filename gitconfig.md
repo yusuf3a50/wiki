@@ -86,3 +86,12 @@ This means that each time you `git push` it will ignore your gitconfig and promp
 ```
 Username for https://github.com:
 ```
+
+Rewrite Git URLs from HTTPS to SSH by adding this to your gitconfig:
+```
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+	insteadOf = https://gitlab.com/
+```
+Then you can just run `git clone https://github.com/useraname/repoName`
