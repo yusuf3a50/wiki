@@ -17,3 +17,7 @@ and put the private key in your `~/.ssh` folder
 
 
 change the server's SSH port to something non-standard and above 1024
+
+
+#### to login to server:
+`ssh -i .ssh/privateKey root@192.168.1.1 -p [non-standard port number]`
