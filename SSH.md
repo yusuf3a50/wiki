@@ -18,6 +18,11 @@ and put the private key in your `~/.ssh` folder
 
 change the server's SSH port to something non-standard and above 1024
 
+#### Private key permissions
+When importing a private key you may need to set the permissions of the key file to be minimal before you can run SSH
+
+`chmod 0400` is the most minimal functioning permissions but `0700` also works
+
 
 #### to login to server:
 `ssh -i .ssh/privateKey root@192.168.1.1 -p [non-standard port number]`
