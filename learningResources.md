@@ -1,6 +1,7 @@
 ### A list of websites for online learning:
 
 #### All languages:
+- https://www.codecademy.com/
 - https://www.codewars.com/kata/latest/my-languages?beta=false
 - (Flask API and SQL Server)[https://youtube.com/playlist?list=PLjC8JXsSUrrg3VSPUfznYQxy_--fDEdi1&si=pcIQyga0bCcKmzh3]
 - (the first of a series of 8 short videos on making APIs with Python and Flask!)[https://www.youtube.com/watch?v=F7AK-WzpYdY&list=PLMOobVGrchXN5tKYdyx-d2OwwgxJuqDVH&index=1]
