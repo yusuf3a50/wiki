@@ -35,4 +35,8 @@
 - https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/
 - Practice javascript and building webpages https://www.frontendmentor.io/
 
-
+#### Git
+ - https://www.youtube.com/watch?v=mJ-qvsxPHpY
+ - https://www.youtube.com/watch?v=SWYqp7iY_Tc
+ - https://education.github.com/git-cheat-sheet-education.pdf
+ - [Oh shit git website](https://ohshitgit.com/)
