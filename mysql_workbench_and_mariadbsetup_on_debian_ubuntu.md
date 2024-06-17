@@ -60,3 +60,9 @@ In workbench, create and configure a new connection using the new user you just 
 
 N.B. Cant find the Output Area? Its definitely not hidden in View > Panels > Hide Output Area ? Try dragging up from just under the vertical scroll bar of the main area. And I mean about two pixels beneath(!) Behold you have discovered the Output Area! See the cursors location and icon in the image below:
 ![workbench secret output area](https://user-images.githubusercontent.com/95235745/197411327-64fe298d-ab43-4880-99b8-7248b7ad2625.png)
+
+
+#### Issue:
+on step 6, rather than connecting, error message:
+    Your connection attempt for user 'user' to the MySQL server at 127.0.0.1:3306:
+    user interaction failed
