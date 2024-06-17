@@ -18,3 +18,5 @@ File > Export > Export as PDF > JPG compression, quality: xx%
 We can compress the image to a fixed size which we want, for that we have to use the –size option with jpegoptim command and mention the size of the image that we want after compressing. Let’s compress the same gfg.jpg file to 200k using jpegoptim with –size option.
 
 `jpegoptim --size=200k gfg.jpg`
+or
+`mkdir reducedSize; for JPG in *.jpg; do jpegoptim --stdout --size=200k "$JPG" > "reducedSize/${JPG%.jpg}".jpg; done`
