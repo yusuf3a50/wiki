@@ -49,3 +49,14 @@ Since your local history diverges from the remote history, you need to use the f
 ```git show```
 
 ```git checkout main```
+
+##### History:
+```git log```
+
+or
+
+```git log --oneline```
+
+##### go to a specific commit
+
+```git checkout <commit-id>```
