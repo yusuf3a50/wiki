@@ -40,3 +40,12 @@ To delete commits from remote, you will need to push your local changes to the r
 Since your local history diverges from the remote history, you need to use the force option.
 
 [source](https://hackernoon.com/how-to-delete-commits-from-remote-in-git)
+
+
+
+#### Some more commands
+```git status```
+
+```git show```
+
+```git checkout main```
