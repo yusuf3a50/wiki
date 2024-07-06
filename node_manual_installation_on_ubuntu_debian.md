@@ -2,7 +2,7 @@ Yes you could just execute the automatic bash script from [here](https://nodesou
 
 But if youre like me and prefer to have more control and oversight over your operating system, this is the way to manually install node from the official repository.
 
-1. Paste this into /etc/apt/sources.list.d/node.source, replacing 'focal' with whichever distro you have installed
+1. Paste this into `/etc/apt/sources.list.d/node.source.list`, replacing 'focal' with whichever distro you have installed
 
 ```
 deb https://deb.nodesource.com/node_20.x focal main
