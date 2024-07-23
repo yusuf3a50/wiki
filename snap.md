@@ -1,3 +1,7 @@
+### List installed snaps:
+
+`snap list`
+
 ### Install a specific version of a package:
 ```
 snap info zoom-client
