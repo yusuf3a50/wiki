@@ -48,7 +48,9 @@ Since your local history diverges from the remote history, you need to use the f
 
 ```git show```
 
-```git checkout main```
+```git checkout -b new_branch_name```
+
+```git switch main```
 
 ##### History:
 ```git log```
