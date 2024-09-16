@@ -1,5 +1,69 @@
-### Installation instructions for mysql-workbench and mariadb on debian
+## Installation instructions for mysql-workbench and mariadb on debian
 
+### Step 1: Install mariadb
+Install mysql if you want but I prefer to use FOSS as much as possible which is why I chose mariadb
+
+Install mariadb:
+
+`sudo apt install mariadb-server`
+
+Check that the mariadb service is running:
+
+`sudo service mariadb status`
+
+Enter into the mariadb console:
+
+`sudo mariadb`
+
+Create a new user:
+
+`MariaDB [(none)]> create user 'user'@'localhost' identified by 'pass_word';`
+
+Allow full control to that user:
+
+`MariaDB [(none)]> GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';`
+
+Reload the privileges tables
+```
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> exit
+```
+
+DONE!
+
+### Step 2: Install mysql-workbench
+#### Method A: Direct download with GPG signature
+1. Download the package for your system [here](https://downloads.mysql.com/archives/workbench/) along with the corresponding signature
+
+2. Verify with the key:
+```
+gpg:                using RSA key BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
+gpg: Good signature from "MySQL Release Engineering <mysql-build@oss.oracle.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: BCA4 3417 C3B4 85DD 128E  C6D4 B7B3 B788 A8D3 785C
+```
+
+3. Install:
+```
+sudo dpkg -i packageName.deb
+sudo apt --fix-broken install
+sudo dpkg -i packageName.deb
+```
+
+DONE!
+
+#### Method B: Repositories
+##### Warning:
+This method does not support many versions of ubuntu. Either the .deb package doesnt have a corresponding GPG signature in the repo or the dependencies cant be resolved for the download (wrong ubuntu version)
+
+##### Installation:
+
+#### Method C: Snap 
+##### Warning: see 'Issue' below:
+Because snap there are issues with workbench connecting to mysql/mariadb installed on the base system/outside of snap. The recommended fixes did not work for me and I researched this issue quite extensively
+
+##### Installation:
 We will use snap to install workbench. However, Debian comes configured to not use snap. Remove this preference by removing the following config file:
 
 `sudo rm /etc/apt/preferences.d/nosnap.pref`
@@ -14,29 +78,6 @@ sudo apt install snapd mariadb-server
 sudo snap install mysql-workbench-community
 ```
 
-
-Check that the mariadb service is running:
-
-`sudo service mariadb status`
-
-Enter into the mariadb console:
-
-`sudo mariadb`
-
-Create a new user:
-
-`MariaDB [(none)]> create user 'user'@'localhost' identified by 'pass_word';`
-
-
-Allow full control to that user:
-
-`MariaDB [(none)]> GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';`
-
-Reloading the privileges tables
-```
-MariaDB [(none)]> FLUSH PRIVILEGES;
-MariaDB [(none)]> exit
-```
 
 
 Run workbench with:
