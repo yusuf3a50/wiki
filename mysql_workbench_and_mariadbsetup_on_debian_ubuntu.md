@@ -1,9 +1,9 @@
 ## Installation instructions for mysql-workbench and mariadb on debian
 
-### Step 1: Install mariadb
-Install mysql if you want but I prefer to use FOSS as much as possible which is why I chose mariadb
+### Step 0: Install mysql-server
+This is buggy as hell as not fully FOSS so I avoid it in favour of mariadb-server
 
-Install mariadb:
+### Step 1: Install mariadb
 
 `sudo apt install mariadb-server`
 
@@ -29,8 +29,6 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 MariaDB [(none)]> exit
 ```
 
-DONE!
-
 ### Step 2: Install mysql-workbench
 #### Method A: Direct download with GPG signature
 1. Download the package for your system [here](https://downloads.mysql.com/archives/workbench/) along with the corresponding signature
@@ -51,7 +49,18 @@ sudo apt --fix-broken install
 sudo dpkg -i packageName.deb
 ```
 
-DONE!
+##### Working examples:
+1. `Linux Mint 21.1 (vera)`, 
+Install: `sudo dpkg -i mysql-workbench-community_8.0.36-1ubuntu22.04_amd64.deb`
+
+2. `Linux Mint 21.3`
+N.B. I did not find a working method for this distro so I upgraded mint to 22 to avoid dependency hell(!)
+Please let me know if you find any
+
+2. Distro: `Linux Mint 22 (wilma)`, 
+Dependency: `sudo apt install libodbc2`, 
+Install: `sudo dpkg -i mysql-workbench-community_8.0.38-1ubuntu24.04_amd64.deb`, 
+N.B.: despite the website stating that the correct install version for this distro is 8.0.36, this resulted in an unresolvable dependency (AFAIK)
 
 #### Method B: Repositories
 ##### Warning:
