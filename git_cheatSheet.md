@@ -2,6 +2,9 @@
 
 `git show`
 
+### get the timestamp of the last commit
+
+`git log -1 --format=%cd`
 
 ### Oops, I need to delete the last 2 commits:
 
