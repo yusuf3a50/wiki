@@ -6,3 +6,6 @@ lots of articles about how to revert BACK to google search as default, but not t
 
 [This site](https://support.mozilla.org/en-US/questions/1226063) suggests adding
 `browser.search.reset.enabled:` and setting it to `false`
+
+#### Clear cookies on exit:
+Extension: Cookie autodelete

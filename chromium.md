@@ -1,0 +1,2 @@
+### Delete cookies on exit:
+there is no built-in feature in Chromium or Chrome to automatically delete cookies upon closing the browser. You would need to rely on extensions like Cookie AutoDelete or use Incognito Mode for temporary browsing.
