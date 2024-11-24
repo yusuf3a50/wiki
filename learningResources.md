@@ -40,3 +40,6 @@
  - https://www.youtube.com/watch?v=SWYqp7iY_Tc
  - https://education.github.com/git-cheat-sheet-education.pdf
  - [Oh shit git website](https://ohshitgit.com/)
+
+#### Networking
+ - https://iximiuz.com/en/series/computer-networking-fundamentals/
