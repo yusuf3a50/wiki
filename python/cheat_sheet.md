@@ -6,3 +6,9 @@ source venv/bin/activate
 pip install foobar
 pip freeze > requirements.txt
 ```
+
+
+
+``` bash
+pip install -r requirements.txt
+```
