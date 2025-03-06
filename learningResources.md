@@ -11,7 +11,7 @@
 - [Another for the @classmethod and @staticmethod tutorials][https://www.youtube.com/watch?v=rq8cL2XMM5M]
 - [These articles explain SOLID principles really clearly and with good examples](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/) [and this one](https://jha-amarjit.medium.com/solid-for-dummies-with-examples-a9c549ced441)
 - [Handy little list of date and time formats!](https://strftime.org/)
-- https://gist.github.com/rxaviers/7360908
+- [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
 - [Khan Academy](https://www.khanacademy.org/)
 - [Udemy](https://www.udemy.com/)
 
@@ -20,12 +20,12 @@
 - https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-ledger.pdf
 - [Knight Lab's SQL Murder Mystery - SQL Murder Mystery Use SQL queries to solve the murder mystery. Suitable for beginners or experienced SQL sleuths](https://mystery.knightlab.com/)
 - [Database Normalization](https://www.youtube.com/watch?v=GFQaEYEc8_8&t=2s)
-- Normalisation videos - simple and helpful youtube series! https://www.youtube.com/watch?v=R7UblSu4744
+- [Normalisation videos - simple and helpful youtube series!](https://www.youtube.com/watch?v=R7UblSu4744)
 - [SQLBolt - Learn SQL with simple, interactive exercises](https://sqlbolt.com/)
 
 #### Python
 - [Python OOP Tutorial - Static Methods and Class Methods](https://www.youtube.com/watch?v=MpuOuZKWUWw&t=258s)
-- https://www.learnpython.dev/03-intermediate-python/40-exceptions/30-try-except-else-finally/
+- [Exceptions - try except](https://www.learnpython.dev/03-intermediate-python/40-exceptions/30-try-except-else-finally/)
 - [useful to visualise what code is doing](https://pythontutor.com/visualize.html#mode=edit)
 - [Overview of the 'cursor' object used to execute statements in SQL via Python](https://www.tutorialspoint.com/python_data_access/python_mysql_cursor_object.htm)
 - [Create A Python API in 12 Minutes](https://www.youtube.com/watch?v=zsYIw6RXjfM])
