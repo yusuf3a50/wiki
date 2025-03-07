@@ -8,7 +8,7 @@
 - https://theproductmanager.com/topics/software-development-life-cycle/
 - [connecting a flask app to mysql](https://hevodata.com/learn/flask-mysql/)
 - https://roadmap.sh/
-- [Another for the @classmethod and @staticmethod tutorials][https://www.youtube.com/watch?v=rq8cL2XMM5M]
+- [Another for the @classmethod and @staticmethod tutorials](https://www.youtube.com/watch?v=rq8cL2XMM5M)
 - [These articles explain SOLID principles really clearly and with good examples](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/) [and this one](https://jha-amarjit.medium.com/solid-for-dummies-with-examples-a9c549ced441)
 - [Handy little list of date and time formats!](https://strftime.org/)
 - [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
