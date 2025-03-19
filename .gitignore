@@ -1,1 +1,14 @@
+# .gitignore
+
 .vscode
+
+# Ignore node_modules directory
+**/node_modules
+
+# This line is specific for macOS:
+**/.DS_Store
+
+### If you already have .DS_Store files tracked in your repository, you will need to untrack them using the following command:
+# git rm --cached **/.DS_Store
+
+# **/ matches any directory level, including subdirectories.
