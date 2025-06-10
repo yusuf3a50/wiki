@@ -1,3 +1,7 @@
+AppArmor
+
+AppArmor (Application Armor) is a Linux kernel security module that provides a framework for restricting the capabilities of programs based on predefined security profiles. It is designed to enhance the security of the operating system by enforcing access control policies that limit what resources applications can access, thereby reducing the risk of security breaches.
+
 `sudo apt install apparmor-notify apparmor-profiles apparmor-utils`
 
 #### To check the status, issue the below command:
