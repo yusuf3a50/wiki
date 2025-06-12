@@ -16,11 +16,18 @@ sudo apt-key export 038651BD | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/sla
 
 [source](https://itsfoss.com/key-is-stored-in-legacy-trusted-gpg/)
 
-### Method 2:
+### Method 2.1:
 
 Here is the same but starting from pulling the key down from a keyserver:
 ``` bash
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2 && gpg --export E88979FB9B30ACF2 | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/keyname.gpg
+```
+
+### Method 2.2:
+Here is the same but avoiding the gpg keyring and just storing it directly in /etc/apt/trusted.gpg.d/
+
+``` bash
+wget -qO- https://example.com/keyname.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/keyname.gpg
 ```
 
 ### Method 3:
