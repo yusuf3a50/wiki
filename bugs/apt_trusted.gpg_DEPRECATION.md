@@ -18,6 +18,13 @@ sudo apt-key export 038651BD | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/sla
 
 ### Method 2:
 
+Here is the same but starting from pulling the key down from a keyserver:
+``` bash
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2 && gpg --export E88979FB9B30ACF2 | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/keyname.gpg
+```
+
+### Method 3:
+
 Here is another method with a different repo:
 
 ``` bash
