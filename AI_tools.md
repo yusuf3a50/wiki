@@ -5,7 +5,7 @@
 | Roo code    | All | All ||security & privacy implications of extension need more careful examining|
 | Cline    | All | All ||security & privacy implications of extension need more careful examining|
 | aider.chat    | All | All |FREE, is a python package and runs in the terminal|agent mode/code review feature seems lacking|
-| github co-pilot  | Currently Grok 3. Uses Claude Sonnet in Agent mode (paid version) | Only a co-pilot subscription |Agent mode|Agent mode requires a subscription|
+| github co-pilot  | Currently Grok 3. Uses Claude Sonnet in Agent mode (paid version) | Only a co-pilot subscription |Agent mode|Doesnt work in VSCodium|
 
 ### IDE with AI integration worth exploring
 
