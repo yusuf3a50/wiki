@@ -7,19 +7,7 @@
 ##### or for a single image:
 `jpegtran -grayscale foo.jpg > foo_greyScale.jpg`
 
-#### create pdf from a jpg
-`img2pdf *.jpg --output combined.pdf`
 
-#### create png(s) from a pdf
-```
-sudo apt install poppler-utils
-pdftoppm -png filename.pdf output
-```
-The output file name will be output-1.png, output-2.png, output-3.png etc..
-
-#### reduce size of a pdf (NOT CLI!!)
-Open PDf with LibreOffice Draw
-File > Export > Export as PDF > JPG compression, quality: xx%
 
 #### Compressing Image to a fixed size using jpegoptim
 We can compress the image to a fixed size which we want, for that we have to use the –size option with jpegoptim command and mention the size of the image that we want after compressing. Let’s compress the same gfg.jpg file to 200k using jpegoptim with –size option.
