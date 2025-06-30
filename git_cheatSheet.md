@@ -19,20 +19,13 @@ To delete commits from a remote server, first, you will need to remove them from
 
 If the commits you want to remove are placed at the top of your commit history, use the `git reset --hard` command with the HEAD object and the number of commits you want to remove.
 
+- This command will remove the latest commit:
+`git reset --hard HEAD~1`
 
-```git reset --hard HEAD~1```
+- This command will remove the latest three commits: 
+`git reset --hard HEAD~3`
 
-This command will remove the latest commit.
-
-
-```git reset --hard HEAD~3```
-
-This command will remove the latest three commits.
-
-
-You can also remove up to a specific commit using a commit’s hash, like so:
-
-```git reset --hard <hash>```
+- You can also remove up to a specific commit using a commit’s hash, like so: `git reset --hard <hash>`
 
 #### Step 2 - Delete the commits from remote
 
