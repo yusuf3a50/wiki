@@ -15,10 +15,12 @@ jupyter nbconvert --to script notebook.ipynb
 #### Outputs `notebook.py`
 
 
-## Converts the other way round:
+## Converts the other way round (Convert the .py file to .ipynb:)
 
 ``` bash
-jupyter nbconvert --to notebook your_script.py
+pip install jupytext
+
+jupytext --to notebook script.py
 ```
 
 ### Use a Git pre-commit hook with nbconvert. Steps:
