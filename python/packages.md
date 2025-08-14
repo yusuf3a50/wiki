@@ -1,7 +1,11 @@
 # Useful packages
 
 ## logging
-`pip install logging`
+- `logging`
 
 ## progress bar & logging (if both then use this)
-`tqdm`
+- `tqdm`
+
+## handling JSON
+- `jq`
+- NOT `pyjq` NOR `python-jq`!
