@@ -1,3 +1,7 @@
+# Firefox security improvements
+
+[This article](https://andrewmarder.net/firefox/) is a good general guide
+
 ### Search engine reverts to google after firefox update
 
 lots of articles about how to revert BACK to google search as default, but not the other way round!
