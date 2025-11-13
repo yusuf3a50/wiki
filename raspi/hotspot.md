@@ -18,3 +18,13 @@ graph LR
     style G fill:#e1ffe1
 ```
 
+1. Download Raspi OS lite (64-bit)
+
+2. https://raspberrytips.com/access-point-setup-raspberry-pi/
+
+SSH
+
+off-button
+
+Further steps?:
+    VPN
