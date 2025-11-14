@@ -74,20 +74,51 @@ graph LR
 
 ### Download and Install Raspberry Pi OS
 
-1. Download **Raspberry Pi OS Lite (64-bit)** from the official website:
+1. Download **Raspberry Pi OS Lite (64-bit)** from [the official website](https://www.raspberrypi.com/software/operating-systems/):
+   - View archive > Select most recent version > Download the following files:
+      - *.img.xz / .torrent
+      - *sha256
+      - *.img.xz.sig
+   - Get the key in order to verify the download: `gpg --keyserver hkp://pgp.rediris.es --recv-keys 0x54C3DD610D9D1B4AF82A37758738CD6B956F460C`
+   - Verify the download: `gpg --verify [relase_date]-raspios-[version]-arm64-lite.img.xz.sig`
+   - You should get something like this:
+   ``` bash
+   gpg: assuming signed data in '2025-10-01-raspios-trixie-arm64-lite.img.xz'
+   gpg: Signature made Thu 02 Oct 2025 04:06:54 AM WEST
+   gpg:                using RSA key 54C3DD610D9D1B4AF82A37758738CD6B956F460C
+   gpg: Good signature from "Raspberry Pi Downloads Signing Key" [unknown]
+   gpg: WARNING: This key is not certified with a trusted signature!
+   gpg:          There is no indication that the signature belongs to the owner.
+   Primary key fingerprint: 54C3 DD61 0D9D 1B4A F82A  3775 8738 CD6B 956F 460C
    ```
-   https://www.raspberrypi.com/software/operating-systems/
+   - Extract the compressed file with **ONE** of the following two commands:
+   ```
+   unxz [relase_date]-raspios-[version]-arm64-lite.img.xz
+   xz -d [relase_date]-raspios-[version]-arm64-lite.img.xz
    ```
 
 2. 🖊️ Use **Raspberry Pi Imager** to write the image to your SD card:
-   - Download from: https://www.raspberrypi.com/software/
-   - Select OS: Raspberry Pi OS Lite (64-bit)
-   - Select Storage: Your SD card
-   - ⚙️ Configure settings (gear icon):
+   - Download `rpi-imager` from [the website](https://www.raspberrypi.com/software/) or use apt:
+   ``` bash
+   sudo apt install rpi-imager
+   ``` 
+   Create a key-pair for your pi by locally running: 
+   ``` bash
+   ssh-keygen -t rsa -b 4096
+   cat keyname.pub
+   ``` 
+   Copy the public key to your clipboard
+   - Start `rpi-imager`
+   - Select OS: Use Custom (select your verified Raspberry Pi OS Lite `.img` file)
+   - Select Storage: Your SD card (triple check you have selected the correct storage medium!!!)
+   - ⚙️ Advanced options (gear icon):
      - ✅ Enable SSH
+         - Allow public-key authentication only
+            - Set authorized_keys for 'pi': [paste your entire public key in here]
      - 👤 Set username and password
      - 🌍 Configure WiFi country (important for hotspot functionality)
      - 🏷️ Set hostname (e.g., "raspberrypi-hotspot")
+     - Disable telemetry
 
 3. ✍️ Write the image and insert SD card into Raspberry Pi
 
