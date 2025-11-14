@@ -4,14 +4,14 @@ password login to SSH servers is inherently insecure which is why you need to:
 
 `ssh-keygen -t rsa -b 4096`
 
-now transfer the public key to the server
-and put the private key in your `~/.ssh` folder
+now transfer the **public key to the server**
+and put the **private key** in your `~/.ssh` folder
 
-#### Private keys begin with:
+#### Private keys (local/client) begin with:
 
 `-----BEGIN OPENSSH PRIVATE KEY-----`
 
-#### Public keys (RSA) begin with:
+#### (RSA) public keys (server) begin with:
 
 `ssh-rsa`
 
