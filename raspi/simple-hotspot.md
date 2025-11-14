@@ -135,24 +135,35 @@ graph LR
 
 ### 🖥️ Connect via SSH
 
-Find your Pi's IP address from your router's DHCP client list, then:
+Find your Pi's IP address from your router's DHCP client list, or find it using CLI:
+Find your network card's name and LAN/private IP adress
+``` bash
+ip a
+```
+Running `arp` usually finds what you need. You may need to install it using `sudo apt install net-tools`
 
-```bash
-ssh pi@<raspberry-pi-ip>
+But if you still cant find the pi's IP address, scan the gateway IP address that your network card and raspi are associated to. For example:
+``` bash
+sudo nmap -sn 192.168.1.100/24
+```
+
+Now youre ready to SSH into your pi
+``` bash
+ssh -i .ssh/raspi pi@<raspberry-pi-ip>
 # or use the hostname you configured
-ssh pi@raspberrypi-hotspot.local
+ssh -i .ssh/raspi pi@raspberrypi-hotspot.local
 ```
 
 ### 🔄 Update System
 
-```bash
+``` bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
 ### 🌍 Configure WiFi Country (if not done during imaging)
 
-```bash
+``` bash
 sudo raspi-config
 ```
 
@@ -165,7 +176,7 @@ Navigate to:
 
 Verify WiFi is enabled:
 
-```bash
+``` bash
 nmcli radio wifi
 ```
 
@@ -173,7 +184,7 @@ If it returns "disabled", enable it:
 
 ```bash
 sudo rfkill unblock wifi
-nmcli radio wifi on
+sudo nmcli radio wifi on
 ```
 
 ### ✅ Verify Network Manager
