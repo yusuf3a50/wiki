@@ -1,6 +1,6 @@
 # 🌐 Simple Raspberry Pi Hotspot Setup Guide
 
-A complete guide to setting up a basic wireless hotspot on Raspberry Pi OS Lite (64-bit) using NetworkManager.
+A complete guide to setting up a basic wireless hotspot on Raspberry Pi OS Lite (64-bit).
 
 ## 📋 Table of Contents
 
@@ -289,6 +289,35 @@ sudo nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ip
 ```bash
 sudo nmcli con up hotspot
 ```
+
+##### 4.1 patch
+
+Raspberry Pi 3 Model B Rev 1.2 (BCM43438/brcmfmac) can fail to start an encrypted AP unless WPA2-PSK (RSN) with CCMP is forced and PMF is disabled. These commands were validated to fix "802.1X supplicant took too long to authenticate" and AP startup timeouts on this device.
+
+``` bash
+# ensure you're modifying the right profile name
+nmcli con show
+
+# force WPA2-PSK (RSN) + CCMP, disable PMF and MAC randomization
+sudo nmcli con modify hotspot 802-11-wireless-security.key-mgmt wpa-psk
+sudo nmcli con modify hotspot 802-11-wireless-security.proto rsn
+sudo nmcli con modify hotspot 802-11-wireless-security.pairwise ccmp
+sudo nmcli con modify hotspot 802-11-wireless-security.group ccmp
+sudo nmcli con modify hotspot 802-11-wireless-security.pmf disable
+sudo nmcli con modify hotspot 802-11-wireless.mac-address-randomization 0
+sudo nmcli con modify hotspot 802-11-wireless.band bg 802-11-wireless.channel 6  # try 1 or 11 if needed
+
+sudo systemctl restart NetworkManager
+sudo nmcli con up hotspot
+
+# confirm NM no longer adds SHA256
+journalctl -u NetworkManager -b -n 150 | grep -i "key_mgmt"
+```
+
+Notes:
+- Replace "Hotspot" with your actual connection name if you used a different one (e.g., "hotspot").
+- If the channel is congested, try 1 or 11.
+- Ensure WiFi country is set (raspi-config) so the regdomain is applied.
 
 ### ✅ Verify the Hotspot
 
