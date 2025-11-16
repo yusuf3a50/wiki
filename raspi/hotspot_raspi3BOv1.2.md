@@ -236,3 +236,22 @@ sudo systemctl restart dnsmasq
 - **DNS Server:** 8.8.8.8 (Google DNS)
 - **WiFi Channel:** 6 (2.4GHz)
 
+## Further details on the encryption bug:
+
+Use these targeted searches to find concrete bug reports and threads that match your logs (brcmfmac, Pi 3 BCM43430/43438, AP mode, WPA2, PMF/SHA256, vendor IE -52):
+
+Raspberry Pi Forums (multiple threads with “brcmf_vif_set_mgmt_ie: vndr ie set error : -52”, fix = disable PMF) https://www.google.com/search?q=site%3Aforums.raspberrypi.com+%22brcmf_vif_set_mgmt_ie%22+-52+hostapd+PMF
+
+NetworkManager + wpa_supplicant AP adding WPA-PSK-SHA256 causing brcmfmac failures https://www.google.com/search?q=site%3Agitlab.freedesktop.org+NetworkManager+wpa-psk-sha256+ap+pmf
+
+iwd “START_AP failed: -22” on brcmfmac https://www.google.com/search?q=site%3Agithub.com%2Fintel%2Fiwd+%22START_AP+failed%22+-22+brcmfmac
+
+Kernel/driver reports about brcmfmac vendor IE set error (-52) in AP mode https://www.google.com/search?q=site%3Abugzilla.kernel.org+brcmfmac+vif_set_mgmt_ie+-52+AP
+
+Hostapd discussions on Pi 3/BCM43430, 802.11w (PMF) breaking AP https://www.google.com/search?q=site%3Alists.infradead.org+hostapd+brcmfmac+ieee80211w+%22-52%22
+
+Typical findings in those links:
+
+brcmfmac fails to set vendor/management IEs when PMF/SAE or SHA256 key-mgmt is enabled.
+Workarounds: PMF off (ieee80211w=0 or pmf=disable), RSN+CCMP only, avoid WPA-PSK-SHA256, 2.4GHz channels 1/6/11.
+Some threads show iwd START_AP -22 on Pi 3; hostapd works with ieee80211w=0.
