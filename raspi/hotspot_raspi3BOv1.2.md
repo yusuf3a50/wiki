@@ -12,23 +12,37 @@ You need three services:
 2. **dnsmasq** - provides DHCP and DNS
 3. **rc.local workaround** - assigns static IP at boot (dhcpcd doesn't work properly on Trixie)
 
+---
 
-Therefore, you need to follow the old method of implementing a hotspot, using the following three services:
-1. hostapf
-2. dnsmasq
-3. dhcpcd ?? maybe? - it doesnt seem to work so we have to implement a workaround for it
+## Installation Steps
 
-### 1. These will need to installed, unmasked, enabled and configured(!) 
+### 1. Install and Enable Services
 
-``` bash 
+```bash 
 sudo apt-get -y install hostapd dnsmasq
-sudo systemctl enable --now hostapd dnsmasq
 sudo systemctl unmask hostapd
-sudo systemctl enable hostapd
+sudo systemctl enable hostapd dnsmasq
 ```
 
-### 2. Edit /etc/dhcpcd.conf by scrolling to the bottom and adding:
-``` bash
+**Unblock WiFi:**
+```bash
+sudo rfkill unblock wifi
+```
+
+### 2. Disable NetworkManager (Important!)
+
+NetworkManager will interfere with hostapd:
+
+```bash
+sudo systemctl stop NetworkManager
+sudo systemctl disable NetworkManager
+```
+
+### 3. Configure dhcpcd (This Won't Work But Is Good Practice)
+
+Edit `/etc/dhcpcd.conf` and add at the bottom:
+
+```bash
 denyinterfaces wlan0
 
 interface wlan0
@@ -36,15 +50,19 @@ interface wlan0
     nohook wpa_supplicant
 ```
 
-### 3. On modern Raspbian/Raspberry Pi OS, the interfaces file is deprecated and often ignored. The system uses dhcpcd to manage network interfaces instead.
-Edit `/etc/network/interfaces` and either delete the wlan0 section or comment it out with #.
-
-You will need to unblock wifi(!)
-sudo rfkill unblock wifi
+**Note:** On Trixie, this configuration is often ignored, which is why we need the rc.local workaround below.
 
 ### 4. Configure hostapd
-We need to set up hostapd to tell it to broadcast a particular SSID and allow WiFi connections on a certain channel. Edit the likely non-existent file `/etc/hostapd/hostapd.conf`:
-``` bash
+
+Create `/etc/hostapd/hostapd.conf`:
+
+```bash
+sudo nano /etc/hostapd/hostapd.conf
+```
+
+Add:
+
+```bash
 interface=wlan0
 driver=nl80211
 ssid=MyPiAP
@@ -62,20 +80,34 @@ wpa_passphrase=raspberry
 rsn_pairwise=CCMP
 ```
 
-5. 
-Unfortunately, hostapd does not know where to find this configuration file, so we need to provide its location to the hostapd startup script. Open /etc/default/hostapd and add the following:
-``` bash
+**Security Note:** Change `ssid` and `wpa_passphrase` to your own values!
+
+### 5. Point hostapd to Configuration File
+
+Edit `/etc/default/hostapd`:
+
+```bash
+sudo nano /etc/default/hostapd
+```
+
+Add or uncomment:
+
+```bash
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
 ### 6. Configure dnsmasq
-Dnsmasq will help us automatically assign IP addresses as new devices connect to our network as well as work as a translation between network names and IP addresses. The .conf file that comes with Dnsmasq has a lot of good information in it, so it might be worthwhile to save it (as a backup) rather than delete it. After saving it, open a new one for editing:
-``` bash
+
+Backup the original config and create a new one:
+
+```bash
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
 sudo nano /etc/dnsmasq.conf
 ```
 
-``` bash
+To `/etc/dnsmasq.conf` add:
+
+```bash
 interface=wlan0 
 listen-address=192.168.5.1
 bind-interfaces 
@@ -85,14 +117,17 @@ bogus-priv
 dhcp-range=192.168.5.2,192.168.5.20,255.255.255.0,24h
 ```
 
-### 7. You should disable network manager
-sudo systemctl stop NetworkManager 2>/dev/null || null
-sudo systemctl disable NetworkManager 2>/dev/null || null
+### 7. Create rc.local Workaround (Critical!)
 
+Since dhcpcd doesn't properly assign the static IP on Trixie, we use rc.local:
 
-/etc/rc.local:
+```bash
+sudo nano /etc/rc.local
+```
 
-``` bash
+Add:
+
+```bash
 #!/bin/sh -e
 #
 # rc.local
@@ -109,5 +144,95 @@ systemctl restart dnsmasq
 
 exit 0
 ```
-Then you need to make the file executable: `sudo chmod +x /etc/rc.local`
+
+Make it executable:
+
+```bash
+sudo chmod +x /etc/rc.local
+```
+
+### 8. Optional: Create systemd Wait Override for dnsmasq
+
+This ensures dnsmasq waits for network to be ready:
+
+```bash
+sudo mkdir -p /etc/systemd/system/dnsmasq.service.d
+sudo nano /etc/systemd/system/dnsmasq.service.d/wait.conf
+```
+
+Add:
+
+```bash
+[Unit]
+After=network-online.target
+Wants=network-online.target
+```
+
+Reload systemd:
+
+```bash
+sudo systemctl daemon-reload
+```
+
+### 9. Reboot and Test
+
+```bash
+sudo reboot
+```
+
+After reboot, verify:
+
+```bash
+ip addr show wlan0                    # Should show 192.168.5.1/24
+sudo systemctl status hostapd         # Should be active (running)
+sudo systemctl status dnsmasq         # Should be active (running)
+```
+
+---
+
+## Troubleshooting
+
+### Check if wlan0 has the correct IP:
+```bash
+ip addr show wlan0
+```
+Should show `inet 192.168.5.1/24`
+
+### Check services are running:
+```bash
+sudo systemctl status hostapd
+sudo systemctl status dnsmasq
+```
+
+### View logs:
+```bash
+sudo journalctl -u hostapd -n 50
+sudo journalctl -u dnsmasq -n 50
+```
+
+### Manually assign IP if needed:
+```bash
+sudo ip addr add 192.168.5.1/24 dev wlan0
+sudo systemctl restart dnsmasq
+```
+
+---
+
+## Why This Setup Is Needed
+
+- **Debian 13 Trixie** is a testing release with some network management quirks
+- **BCM43438 chipset** in Pi 3B v1.2 has known driver issues with WPA encryption in NetworkManager
+- **dhcpcd service** doesn't exist or work properly on Trixie, requiring the rc.local workaround
+- The **old hostapd + dnsmasq method** is more reliable for this specific hardware/software combination
+
+---
+
+## Network Configuration Summary
+
+- **AP SSID:** MyPiAP (change in `/etc/hostapd/hostapd.conf`)
+- **AP Password:** raspberry (change in `/etc/hostapd/hostapd.conf`)
+- **AP IP:** 192.168.5.1
+- **DHCP Range:** 192.168.5.2 - 192.168.5.20
+- **DNS Server:** 8.8.8.8 (Google DNS)
+- **WiFi Channel:** 6 (2.4GHz)
 
