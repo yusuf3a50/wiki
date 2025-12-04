@@ -31,3 +31,6 @@ source .venv/bin/activate   #this changes the terminal to python version 3.12
 pip3 --version              #check whether pip will work for your python3.12
 pip3 install -r requirements.txt
 ```
+
+## Further resources:
+- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
