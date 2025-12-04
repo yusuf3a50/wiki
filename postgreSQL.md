@@ -1,3 +1,0 @@
-# postgreSQL
-
-## Installation
