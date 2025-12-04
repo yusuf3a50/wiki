@@ -38,7 +38,7 @@ glimpse(patient_CGVs)
 filter(patient_CGVs, PCSTRESN <= 20)
 
 PCSTRESN_times_ten <- patient_CGVs %>%
-    mutate(PCSTRESN_times_ten = PCSTRESN * 10)
+  mutate(PCSTRESN_times_ten = PCSTRESN * 10)
 
 
 library(ggplot2)    # Part of the tidyverse package
@@ -53,3 +53,24 @@ ggplot(patient_CGVs, aes(x=PCSTRESN)) +
     geom_histogram() +
     geom_freqpoly() +
     labs(x = "CGVs in mg/dL")
+
+# =============================================================
+
+library(jsonlite)
+data(iris)
+View(iris)
+
+# 1) Data frame -> JSON (rows as objects)
+iris_json <- toJSON(iris, dataframe = "rows", pretty = TRUE, na = "null", auto_unbox = TRUE)
+cat("Iris JSON (first 300 chars):\n", substr(iris_json, 1, 300), "...\n\n", sep = "")
+writeLines(iris_json, file.path(getwd(), "iris.json"))
+
+# 2) Nested JSON (split iris by Species)
+iris_nested <- split(iris, iris$Species)
+iris_nested_json <- toJSON(iris_nested, dataframe = "rows", pretty = TRUE, auto_unbox = TRUE)
+writeLines(iris_nested_json, file.path(getwd(), "iris_by_species.json"))
+
+# 3) NDJSON (newline-delimited JSON) for streaming/large data
+ndjson_con <- file(file.path(getwd(), "iris.ndjson"))
+stream_out(iris, ndjson_con)
+close(ndjson_con)
