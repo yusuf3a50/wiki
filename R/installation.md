@@ -6,7 +6,10 @@ Note: libxml2-dev is a dependency for the R languageServer
 
 These packages are required for the tidyverse library:
 ``` bash
-sudo apt install libcurl4-openssl-dev libssl-dev libfontconfig1-dev libfreetype6-dev
+sudo apt install -y libcurl4-openssl-dev libssl-dev libfontconfig1-dev libfreetype6-dev
+sudo apt install -y build-essential r-base-dev pkg-config \
+  libcurl4-openssl-dev libssl-dev libxml2-dev \
+  zlib1g-dev libbz2-dev liblzma-dev
 ```
 
 ## (R in Visual Studio Code)[code.visualstudio.com/docs/languages/r]
