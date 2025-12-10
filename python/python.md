@@ -2,11 +2,12 @@
 
 This is basically node_modules, python style
 
-`sudo apt install python3-venv`
-
-`python3 -m venv .venv`
-
-`source .venv/bin/activate`
+```bash
+sudo apt install python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
+echo $VIRTUAL_ENV   # Optional: When your working directory is activated/inside one, this displays where your virtual environment is location on your system
+```
 
 Once virtual environment is activated, project dependecies can be installed from requirements.txt with command:
 
@@ -14,13 +15,13 @@ Once virtual environment is activated, project dependecies can be installed from
 
 ### Upgrade python to version 3.12:
 
-```
+```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
- sudo apt update
- gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 0xBA6932366A755776
- gpg --export --armor BA6932366A755776 | sudo apt-key add -
- sudo apt update
- sudo apt install python3.12 python3.12-venv
+sudo apt update
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 0xBA6932366A755776
+gpg --export --armor BA6932366A755776 | sudo apt-key add -
+sudo apt update
+sudo apt install python3.12 python3.12-venv
 ```
 
 Then to set up a virtual environment in python3.12 youd then need:
