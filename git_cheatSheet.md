@@ -86,6 +86,14 @@ git subtree pull --prefix=<destination-folder-path> <source-repository-url> <spl
 git subtree pull --prefix=path/to/module https://github.com/username/source-repo.git module-api-only --squash
 ```
 
+#### Step 5: Updating the split branch in the source repo
+In the source repo, I have made some changes on a branch and I want to push those changes to that branch's split branch
+```bash
+git checkout branch_name
+
+git subtree push --prefix=<destination-folder-path> origin <split-branch-name>
+git subtree push --prefix=path/to/module origin module-api-only
+```
 
 #### Some more commands
 ```git status```
