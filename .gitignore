@@ -12,3 +12,4 @@
 # git rm --cached **/.DS_Store
 
 # **/ matches any directory level, including subdirectories.
+**/.venv
