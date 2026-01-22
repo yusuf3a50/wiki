@@ -13,3 +13,6 @@
 
 # **/ matches any directory level, including subdirectories.
 **/.venv
+
+.env
+**/.env
