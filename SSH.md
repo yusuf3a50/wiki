@@ -1,3 +1,5 @@
+# SSH
+
 password login to SSH servers is inherently insecure which is why you need to:
 
 ### create a key-pair
@@ -26,3 +28,10 @@ When importing a private key you may need to set the permissions of the key file
 
 #### to login to server:
 `ssh -i .ssh/privateKey root@192.168.1.1 -p [non-standard port number]`
+
+### Server hardenning:
+#### Set SSH to listen for connections on a non-standard port
+
+
+
+N.B Also see [fail2ban](fail2ban.md)
