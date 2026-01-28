@@ -114,3 +114,6 @@ or
 ##### go to a specific commit
 
 ```git checkout <commit-id>```
+
+### git actions
+[for git actions see this repo](https://github.com/sifr01/git-actions/)
