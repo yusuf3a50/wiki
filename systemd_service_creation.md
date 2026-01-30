@@ -92,6 +92,14 @@ StandardError=append:/var/log/my-service-error.log
 WantedBy=multi-user.target
 ```
 
+`WantedBy` creates a dependency relationship that tells systemd:
+
+"This service should be started when the system reaches multi-user.target"
+What are targets?
+Targets are systemd's way of grouping units and defining system states (similar to runlevels in SysV init):
+
+multi-user.target: Normal multi-user system (command-line, networking available, no GUI)
+
 **Key Configuration Options:**
 - `Type=simple`: The process started is the main process
 - `Restart=always`: Automatically restart if the service crashes
