@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import { db } from './db';
+import { buttonPresses } from './db/schema';
 
 // This is a simple React component demonstrating state management using useState.
 // It displays a counter and a button to increment the counter.
@@ -9,8 +11,18 @@ function App() {
   const [count, setCount] = useState(0);
 
   // Function to handle button click and increment the counter
-  const handleIncrement = () => {
+  const handleIncrement = async () => {
     setCount(count + 1);
+    
+    // Write the current timestamp to the database
+    try {
+      await db.insert(buttonPresses).values({
+        timestamp: new Date()
+      });
+      console.log('Button press recorded in database');
+    } catch (error) {
+      console.error('Error recording button press:', error);
+    }
   };
 
   return (
