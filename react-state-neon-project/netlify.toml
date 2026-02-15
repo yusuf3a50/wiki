@@ -13,9 +13,10 @@
   node_bundler = "esbuild"
 
 # Local development configuration
-# Run with: npm run dev
+# Run with: netlify dev
+# IMPORTANT: Access the app at http://localhost:8888 (Netlify dev server)
+# NOT at http://localhost:3000 (React dev server) to ensure functions work
 [dev]
   command = "npm start"
-  port = 3000
-  targetPort = 3000
+  port = 8888
   publish = "build"
