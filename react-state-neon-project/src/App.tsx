@@ -14,7 +14,8 @@ function App() {
   const handleIncrement = async () => {
     setCount(count + 1);
     
-    // Write the current timestamp to the database
+    // Record the button press to the database with automatic timestamp
+    // The empty values object uses the default timestamp from the schema
     try {
       await db.insert(buttonPresses).values({});
       console.log('Button press recorded in database');

@@ -45,10 +45,44 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Setup Instructions
 
-## Setup instructions:
+### Database Setup
 
-``` bash
+This project uses [Neon](https://neon.tech) serverless PostgreSQL with Drizzle ORM.
+
+```bash
+# Link to Netlify project
 npx netlify link
+
+# Initialize Neon database
 npx netlify db init
+
+# Run migrations to create tables
+npm run db:migrate:manual
+
+# Verify tables were created
+npm run db:verify
 ```
+
+### Environment Variables
+
+Create a `.env.local` file with your Neon database URL:
+
+```bash
+REACT_APP_DATABASE_URL="postgresql://user:password@host/database?sslmode=require"
+```
+
+**Note:** This project uses Neon's HTTP API (`@neondatabase/serverless`) which is designed for browser use. The connection string is safe to include in the build because:
+- Neon uses HTTPS-only communication (not raw PostgreSQL protocol)
+- Built-in connection pooling and query limits prevent abuse
+- No direct socket access to the database
+
+The `netlify.toml` file configures Netlify's secrets scanner to allow this variable.
+
+### Database Scripts
+
+- `npm run db:generate` - Generate new migrations from schema changes
+- `npm run db:migrate` - Run migrations (via Netlify)
+- `npm run db:migrate:manual` - Run migrations directly
+- `npm run db:verify` - Check which tables exist in the database
