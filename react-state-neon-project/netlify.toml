@@ -1,0 +1,21 @@
+# Netlify configuration file
+# Configures build settings and serverless functions
+
+[build]
+  base = "react-state-neon-project"
+  command = "npm run build"
+  publish = "build"
+
+# Configure serverless functions directory
+# Functions run server-side and can safely access DATABASE_URL
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Local development configuration
+# Run with: npm run dev
+[dev]
+  command = "npm start"
+  port = 3000
+  targetPort = 3000
+  publish = "build"
