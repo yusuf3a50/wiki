@@ -16,9 +16,7 @@ function App() {
     
     // Write the current timestamp to the database
     try {
-      await db.insert(buttonPresses).values({
-        timestamp: new Date()
-      });
+      await db.insert(buttonPresses).values({});
       console.log('Button press recorded in database');
     } catch (error) {
       console.error('Error recording button press:', error);
