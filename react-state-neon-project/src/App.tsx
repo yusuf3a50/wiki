@@ -33,9 +33,11 @@ function App() {
       <h1>Simple React State Example</h1>
       <p>The current count is: <strong>{count}</strong></p>
       <button onClick={handleIncrement}>Increment</button>
-      <p style={{ marginTop: '2rem', color: '#888' }}>
-        (This demonstrates how to use <code>useState</code> to manage state in a React component.)
-      </p>
+      <ul style={{ marginTop: '2rem', color: '#888' }}>
+        <li>The frontend demonstrates how to use <code>useState</code> to manage state in a React component.</li>
+        <li>The backend handles Neon database interactions logging the times of when the button is pressed.</li>
+        <li>The database implementation uses serverless functions, allowing you to persist data without exposing credentials on the client-side.</li>
+      </ul>
     </div>
   );
 }
