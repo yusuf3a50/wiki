@@ -1,24 +1,28 @@
 
 import React, { useState } from 'react';
-import { db } from './db';
-import { buttonPresses } from './db/schema';
 
-// This is a simple React component demonstrating state management using useState.
-// It displays a counter and a button to increment the counter.
+// Simple React component demonstrating state management with server-side database persistence
 function App() {
-  // Declare a state variable 'count' and a function to update it, 'setCount'.
-  // The initial value of 'count' is 0.
+  // State variable to track button click count locally
   const [count, setCount] = useState(0);
 
   // Function to handle button click and increment the counter
   const handleIncrement = async () => {
     setCount(count + 1);
     
-    // Record the button press to the database with automatic timestamp
-    // The empty values object uses the default timestamp from the schema
+    // Call serverless function to record button press in database
+    // This keeps database credentials secure on the server-side
     try {
-      await db.insert(buttonPresses).values({});
-      console.log('Button press recorded in database');
+      const response = await fetch('/.netlify/functions/record-button-press', {
+        method: 'POST',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to record button press');
+      }
+      
+      const data = await response.json();
+      console.log('Button press recorded:', data);
     } catch (error) {
       console.error('Error recording button press:', error);
     }

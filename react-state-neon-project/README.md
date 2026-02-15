@@ -49,9 +49,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Database Setup
 
-This project uses [Neon](https://neon.tech) serverless PostgreSQL with Drizzle ORM.
+This project uses [Neon](https://neon.tech) serverless PostgreSQL with Drizzle ORM and Netlify Functions.
 
 ```bash
+# Install dependencies
+npm install
+
 # Link to Netlify project
 npx netlify link
 
@@ -70,15 +73,24 @@ npm run db:verify
 Create a `.env.local` file with your Neon database URL:
 
 ```bash
-REACT_APP_DATABASE_URL="postgresql://user:password@host/database?sslmode=require"
+DATABASE_URL="postgresql://user:password@host/database?sslmode=require"
 ```
 
-**Note:** This project uses Neon's HTTP API (`@neondatabase/serverless`) which is designed for browser use. The connection string is safe to include in the build because:
-- Neon uses HTTPS-only communication (not raw PostgreSQL protocol)
-- Built-in connection pooling and query limits prevent abuse
-- No direct socket access to the database
+**Important:** Also set `DATABASE_URL` in Netlify UI under Site Settings → Environment Variables.
 
-The `netlify.toml` file configures Netlify's secrets scanner to allow this variable.
+**Security Note:** This project uses serverless functions to keep database credentials secure:
+- The React app never accesses the database directly
+- Database operations happen server-side via Netlify Functions
+- `DATABASE_URL` (without `REACT_APP_` prefix) is never exposed to the browser
+
+### Local Development
+
+```bash
+# Start development server with Netlify Functions
+netlify dev
+```
+
+This starts both the React app and Netlify Functions locally.
 
 ### Database Scripts
 
