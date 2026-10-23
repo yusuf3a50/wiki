@@ -6,7 +6,9 @@ curl -fsSL "https://keys.openpgp.org/vks/v1/by-keyid/[KEY ID HERE]" | gpg --show
 ```
 
 ### Search by email, name, or key ID with GnuPG:
+```
 gpg --keyserver hkps://keyserver.ubuntu.com --search-keys 'name@example.com'
+```
 
 ### Check a keyserver to see who has signed the key with a given key ID. Exclude extraneous entries where the User ID is not found.
 ```
